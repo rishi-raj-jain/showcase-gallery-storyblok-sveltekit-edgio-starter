@@ -19,7 +19,7 @@ const transformResponse = (res, req) => {
 	sendBrotliEncoded(req, res)
 }
 
-const router = new Router()
+const router = new Router({ indexPermalink: true })
 
 if (isProductionBuild()) {
 	router.static('.vercel/output/static')
