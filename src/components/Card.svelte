@@ -28,6 +28,7 @@
 				alt={item.name}
 				src={getScreenshotLoader(item.demoUrl)}
 				loading={index && index < 1 ? 'eager' : 'lazy'}
+				fetchpriority={index && index < 1 ? 'high' : 'low'}
 				class="aspect-video w-full transform-gpu object-cover transition will-change-auto"
 				style={item.blurDataURL && `background-image: url(${item.blurDataURL}); background-repeat: no-repeat; background-position: 50% 50%; background-size: cover;`}
 			/>
