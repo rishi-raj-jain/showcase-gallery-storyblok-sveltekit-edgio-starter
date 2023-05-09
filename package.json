@@ -4,7 +4,7 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
-		"preview": "vite preview",
+		"edgio:dev": "edgio dev",
 		"edgio:build": "edgio build",
 		"edgio:deploy": "edgio deploy",
 		"edgio:production": "edgio run --production",
