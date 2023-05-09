@@ -4,7 +4,7 @@ Guide: [https://www.storyblok.com/tp/slug](https://www.storyblok.com/tp/slug)
 
 ### Demo
 
-https://rishi-raj-jain-showcase-templates-storyblok-svel-a175ad-default.layer0-limelight.link
+[https://rishi-raj-jain-showcase-gallery-storyblok-svelte-5b8f53-default.layer0-limelight.link](https://rishi-raj-jain-showcase-gallery-storyblok-svelte-5b8f53-default.layer0-limelight.link)
 
 ## Introduction
 
