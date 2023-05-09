@@ -110,7 +110,7 @@
 
 <div class="z-10 mt-24 flex w-full flex-col sm:items-center">
 	<h1 class="px-10 text-4xl font-bold text-black sm:text-center md:text-6xl">Find your Template</h1>
-	<h3 class="mt-5 px-10 text-2xl font-light text-gray-800 sm:text-center md:max-w-full">Jumpstart your app development process with our pre-built solutions.</h3>
+	<h2 class="mt-5 px-10 text-2xl font-light text-gray-800 sm:text-center md:max-w-full">Jumpstart your app development process with our pre-built solutions.</h2>
 	<div class="mt-12 flex w-full flex-col items-start px-10 sm:mt-24 sm:flex-row lg:max-w-6xl xl:px-0">
 		<div class="hide-if-not-script-available flex w-full min-w-[250px] flex-col sm:w-[300px]">
 			<span class="text-md font-semibold text-black"> Filter Templates </span>
