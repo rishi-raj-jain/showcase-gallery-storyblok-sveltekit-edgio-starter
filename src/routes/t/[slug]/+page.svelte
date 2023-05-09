@@ -21,7 +21,7 @@
 <div class="flex w-full flex-col items-center">
 	<div class="z-10 flex w-full flex-row flex-wrap gap-10 px-10 md:flex-nowrap lg:max-w-6xl xl:px-0">
 		<div class="mt-24 flex w-full flex-col md:w-1/3">
-			<a href="/" class="max-w-max border-b pb-0.5 text-black/50 hover:text-black"> &#x2190; Back To Templates </a>
+			<a aria-label="Back To Homepage" href="/" class="max-w-max border-b pb-0.5 text-black/50 hover:text-black"> &#x2190; Back To Templates </a>
 			{#if name && name.length > 0}
 				<h1 class="mt-8 text-2xl font-bold text-black md:text-4xl">
 					{name}
@@ -86,10 +86,10 @@
 			{/if}
 			{#if githubUrl && githubUrl.length > 0}
 				<div class="flex flex-row flex-wrap items-center justify-between">
-					<a href={`https://app.layer0.co/deploy?repo=${githubUrl}`} target="_blank">
+					<a aria-label="Deploy To Edgio URL" href={`https://app.layer0.co/deploy?repo=${githubUrl}`} target="_blank">
 						<img class="ml-4 mt-8 h-[40px] max-w-max scale-125" alt="Deploy To Edgio" height="28px" width="126px" src="https://docs.edg.io/button.svg" />
 					</a>
-					<a class="mt-8 w-full rounded border bg-white px-6 py-2 text-center text-sm duration-300 hover:border-black sm:w-auto" href={githubUrl} target="_blank"> View Repo </a>
+					<a aria-label="View Repo URL" class="mt-8 w-full rounded border bg-white px-6 py-2 text-center text-sm duration-300 hover:border-black sm:w-auto" href={githubUrl} target="_blank"> View Repo </a>
 				</div>
 			{/if}
 		</div>
