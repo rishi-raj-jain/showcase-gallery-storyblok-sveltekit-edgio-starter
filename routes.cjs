@@ -40,7 +40,8 @@ router.match('/', ({ renderWithApp, removeUpstreamResponseHeader, cache }) => {
 	removeUpstreamResponseHeader('cache-control')
 	cache({
 		edge: {
-			maxAgeSeconds: 60 * 60 * 24 * 365
+			maxAgeSeconds: 60 * 60,
+			staleWhileRevalidateSeconds: 60 * 60 * 24 * 365
 		},
 		key: new CustomCacheKey().excludeAllQueryParametersExcept('keyName', 'search', 'toggle')
 	})
@@ -51,7 +52,8 @@ router.match('/t/:path', ({ renderWithApp, removeUpstreamResponseHeader, cache }
 	removeUpstreamResponseHeader('cache-control')
 	cache({
 		edge: {
-			maxAgeSeconds: 60 * 60 * 24 * 365
+			maxAgeSeconds: 60 * 60,
+			staleWhileRevalidateSeconds: 60 * 60 * 24 * 365
 		},
 		key: new CustomCacheKey().excludeAllQueryParametersExcept('keyName', 'search')
 	})
@@ -67,7 +69,8 @@ router.match('/__data.json', ({ renderWithApp, removeUpstreamResponseHeader, cac
 			serviceWorkerSeconds: 60
 		},
 		edge: {
-			maxAgeSeconds: 60 * 60 * 24 * 365
+			maxAgeSeconds: 60 * 60,
+			staleWhileRevalidateSeconds: 60 * 60 * 24 * 365
 		},
 		key: new CustomCacheKey().excludeAllQueryParametersExcept('keyName', 'search', 'toggle')
 	})
@@ -81,7 +84,8 @@ router.match('/t/:path/__data.json', ({ renderWithApp, removeUpstreamResponseHea
 			serviceWorkerSeconds: 60
 		},
 		edge: {
-			maxAgeSeconds: 60 * 60 * 24 * 365
+			maxAgeSeconds: 60 * 60,
+			staleWhileRevalidateSeconds: 60 * 60 * 24 * 365
 		},
 		key: new CustomCacheKey().excludeAllQueryParametersExcept('keyName', 'search')
 	})
@@ -101,6 +105,9 @@ router.match(
 	({ renderWithApp, removeUpstreamResponseHeader, cache }) => {
 		removeUpstreamResponseHeader('cache-control')
 		cache({
+			browser: {
+				maxAgeSeconds: 60
+			},
 			edge: {
 				maxAgeSeconds: 60 * 60 * 24 * 365
 			},
