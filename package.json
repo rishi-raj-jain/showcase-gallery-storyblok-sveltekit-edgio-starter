@@ -1,5 +1,5 @@
 {
-	"name": "showcase-templates-storyblok-sveltekit-edgio-starter",
+	"name": "showcase-gallery-storyblok-sveltekit-edgio-starter",
 	"type": "module",
 	"scripts": {
 		"dev": "vite dev",
