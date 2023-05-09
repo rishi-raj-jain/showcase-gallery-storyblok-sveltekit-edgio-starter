@@ -10,6 +10,7 @@
 	$: framework = template?.framework
 	$: type = template?.type
 	$: css = template?.css
+	$: cms = template?.cms
 	$: publisher = template?.publisher
 	$: overview = template?.overview
 	$: demoUrl = template?.demoUrl
@@ -58,6 +59,17 @@
 					<span class="text-sm font-semibold text-gray-600"> CSS </span>
 					<span class="text-gray-600">
 						{css
+							.split(',')
+							.map((i) => i.trim())
+							.join(', ')}
+					</span>
+				</div>
+			{/if}
+			{#if cms && cms.length > 0}
+				<div class="mt-4 flex flex-row items-center justify-between border-t pt-2">
+					<span class="text-sm font-semibold text-gray-600"> CMS </span>
+					<span class="text-gray-600">
+						{cms
 							.split(',')
 							.map((i) => i.trim())
 							.join(', ')}

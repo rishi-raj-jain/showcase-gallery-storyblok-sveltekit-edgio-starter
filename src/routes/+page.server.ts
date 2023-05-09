@@ -40,9 +40,10 @@ export const load = async ({ url }) => {
 		publisher: i.content.publisher,
 		description: i.content.description,
 		githubUrl: i.content.githubUrl.url,
-		css: i.content.css.split(',').map((i: string) => i.trim()),
-		type: i.content.type.split(',').map((i: string) => i.trim()),
-		framework: i.content.framework.split(',').map((i: string) => i.trim())
+		...(i.content.css && { css: i.content.css.split(',').map((i: string) => i.trim()) }),
+		...(i.content.cms && { cms: i.content.cms.split(',').map((i: string) => i.trim()) }),
+		...(i.content.type && { type: i.content.type.split(',').map((i: string) => i.trim()) }),
+		...(i.content.framework && { framework: i.content.framework.split(',').map((i: string) => i.trim()) })
 	}))
 
 	if (searchParam) {

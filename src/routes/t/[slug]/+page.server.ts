@@ -21,15 +21,16 @@ export const load = async ({ url, params }) => {
 
 	// Create the template data
 	const template = {
-		css: findTemplate.content.css,
-		type: findTemplate.content.type,
 		name: findTemplate.content.name,
-		publisher: findTemplate.content.publisher,
-		framework: findTemplate.content.framework,
 		demoUrl: findTemplate.content.demoUrl.url,
-		description: findTemplate.content.description,
+		framework: findTemplate.content.framework,
+		publisher: findTemplate.content.publisher,
 		githubUrl: findTemplate.content.githubUrl.url,
-		overview: await toHTML(findTemplate.content.overview)
+		description: findTemplate.content.description,
+		...(findTemplate.content.cms && { cms: findTemplate.content.cms }),
+		...(findTemplate.content.css && { css: findTemplate.content.css }),
+		...(findTemplate.content.type && { type: findTemplate.content.type }),
+		...(findTemplate.content.overview && { overview: await toHTML(findTemplate.content.overview) })
 	}
 
 	if (!(url.hostname === 'localhost') && template?.demoUrl) {

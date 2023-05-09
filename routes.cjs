@@ -14,6 +14,7 @@ const sendBrotliEncoded = (req, res) => {
 	res.body = encodedBody
 }
 
+// Try to brotli encode each response
 const transformResponse = (res, req) => {
 	sendBrotliEncoded(req, res)
 }
@@ -24,6 +25,7 @@ if (isProductionBuild()) {
 	router.static('.vercel/output/static')
 }
 
+// Preload the URLs as soon as the deployment is done
 router.prerender(async () => {
 	return [{ path: '/' }, { path: '/__data.json' }]
 })
@@ -32,23 +34,11 @@ router.match('/service-worker.js', ({ serviceWorker }) => {
 	serviceWorker('.edgio/temp/service-worker.js')
 })
 
+// Cache the page repsonses at the edge only
+
 router.match('/', ({ renderWithApp, removeUpstreamResponseHeader, cache }) => {
 	removeUpstreamResponseHeader('cache-control')
 	cache({
-		edge: {
-			maxAgeSeconds: 60 * 60 * 24 * 365
-		},
-		key: new CustomCacheKey().excludeAllQueryParametersExcept('keyName', 'search', 'toggle')
-	})
-	renderWithApp({ transformResponse })
-})
-
-router.match('/__data.json', ({ renderWithApp, removeUpstreamResponseHeader, cache }) => {
-	removeUpstreamResponseHeader('cache-control')
-	cache({
-		browser: {
-			serviceWorkerSeconds: 60
-		},
 		edge: {
 			maxAgeSeconds: 60 * 60 * 24 * 365
 		},
@@ -68,6 +58,22 @@ router.match('/t/:path', ({ renderWithApp, removeUpstreamResponseHeader, cache }
 	renderWithApp({ transformResponse })
 })
 
+// Cache the navigation JSONs at the browser in SW only
+
+router.match('/__data.json', ({ renderWithApp, removeUpstreamResponseHeader, cache }) => {
+	removeUpstreamResponseHeader('cache-control')
+	cache({
+		browser: {
+			serviceWorkerSeconds: 60
+		},
+		edge: {
+			maxAgeSeconds: 60 * 60 * 24 * 365
+		},
+		key: new CustomCacheKey().excludeAllQueryParametersExcept('keyName', 'search', 'toggle')
+	})
+	renderWithApp({ transformResponse })
+})
+
 router.match('/t/:path/__data.json', ({ renderWithApp, removeUpstreamResponseHeader, cache }) => {
 	removeUpstreamResponseHeader('cache-control')
 	cache({
@@ -82,6 +88,7 @@ router.match('/t/:path/__data.json', ({ renderWithApp, removeUpstreamResponseHea
 	renderWithApp({ transformResponse })
 })
 
+// Only match requests to the /og which contain text, image and description
 router.match(
 	{
 		path: '/og',
@@ -103,9 +110,9 @@ router.match(
 	}
 )
 
-router.fallback(({ renderWithApp, send }) => {
-	renderWithApp()
-	// send('Blocked', 403)
+// Block all other requests
+router.fallback(({ send }) => {
+	send('Blocked', 403)
 })
 
 export default router

@@ -6,19 +6,19 @@
 			<div class="mt-8 w-full animate-pulse bg-gray-400 py-1 text-2xl font-bold text-black md:text-4xl" />
 			<div class="mt-2 w-full animate-pulse bg-gray-400 py-1 text-2xl font-bold text-black md:text-4xl" />
 			<div class="mt-8 flex flex-row items-center justify-between border-t pt-2">
-				<span class="text-sm font-semibold text-gray-600"> Framework </span>
+				<span class="w-[100px] animate-pulse bg-gray-400 py-1 text-gray-600" />
 				<span class="w-[100px] animate-pulse bg-gray-400 py-1 text-gray-600" />
 			</div>
 			<div class="mt-4 flex flex-row items-center justify-between border-t pt-2">
-				<span class="text-sm font-semibold text-gray-600"> Use Case </span>
+				<span class="w-[100px] animate-pulse bg-gray-400 py-1 text-gray-600" />
 				<span class="w-[100px] animate-pulse bg-gray-400 py-1 text-gray-600" />
 			</div>
 			<div class="mt-4 flex flex-row items-center justify-between border-t pt-2">
-				<span class="text-sm font-semibold text-gray-600"> CSS </span>
+				<span class="w-[100px] animate-pulse bg-gray-400 py-1 text-gray-600" />
 				<span class="w-[100px] animate-pulse bg-gray-400 py-1 text-gray-600" />
 			</div>
 			<div class="mt-4 flex flex-row items-center justify-between border-t pt-2">
-				<span class="text-sm font-semibold text-gray-600"> Publisher </span>
+				<span class="w-[100px] animate-pulse bg-gray-400 py-1 text-gray-600" />
 				<span class="w-[100px] animate-pulse bg-gray-400 py-1 text-gray-600" />
 			</div>
 			<div class="flex flex-row flex-wrap items-center justify-between">
