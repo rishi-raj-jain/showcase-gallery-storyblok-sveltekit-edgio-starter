@@ -22,5 +22,5 @@ export function getDescription(val?: string) {
 }
 
 export function getDomain(val?: string) {
-	return val ?? 'https://templates.edg.io'
+	return val ?? 'https://rishi-raj-jain-showcase-gallery-storyblok-svelte-5b8f53-default.layer0-limelight.link'
 }
