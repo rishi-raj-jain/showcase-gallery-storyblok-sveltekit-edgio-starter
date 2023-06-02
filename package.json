@@ -2,8 +2,9 @@
 	"name": "showcase-gallery-storyblok-sveltekit-edgio-starter",
 	"type": "module",
 	"scripts": {
-		"dev": "vite dev",
+		"dev": "vite dev --port 3000",
 		"build": "vite build",
+		"preview": "vite preview --port 3000",
 		"edgio:dev": "edgio dev",
 		"edgio:build": "edgio build",
 		"edgio:deploy": "edgio deploy",
