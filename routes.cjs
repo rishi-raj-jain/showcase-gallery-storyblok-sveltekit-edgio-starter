@@ -48,7 +48,7 @@ router.match('/', ({ renderWithApp, removeUpstreamResponseHeader, cache }) => {
 	renderWithApp({ transformResponse })
 })
 
-router.match('/t/:path', ({ renderWithApp, removeUpstreamResponseHeader, cache }) => {
+router.match('/ttemplates/:path', ({ renderWithApp, removeUpstreamResponseHeader, cache }) => {
 	removeUpstreamResponseHeader('cache-control')
 	cache({
 		edge: {
@@ -77,7 +77,7 @@ router.match('/__data.json', ({ renderWithApp, removeUpstreamResponseHeader, cac
 	renderWithApp({ transformResponse })
 })
 
-router.match('/t/:path/__data.json', ({ renderWithApp, removeUpstreamResponseHeader, cache }) => {
+router.match('/ttemplates/:path/__data.json', ({ renderWithApp, removeUpstreamResponseHeader, cache }) => {
 	removeUpstreamResponseHeader('cache-control')
 	cache({
 		browser: {
