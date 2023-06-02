@@ -2,7 +2,7 @@ import type { Seo } from '@/src/classes'
 import { redirect } from '@sveltejs/kit'
 import { storyblokApi } from '@/src/storyblok'
 import { getBase64ImageUrl } from '@/src/image'
-import { getDescription, getScreenshotLoader, getTitle } from '@/src/utils'
+import { getDescription, getOrigin, getScreenshotLoader, getTitle } from '@/src/utils'
 
 /** @type {import('./$types').PageServerLoad} */
 export const load = async ({ url }) => {
@@ -10,7 +10,7 @@ export const load = async ({ url }) => {
 	const seo: Seo = {
 		title: 'Find your Template - ' + getTitle(),
 		description: getDescription(),
-		domain: url.origin,
+		domain: getOrigin(url),
 		pathname: url.pathname
 	}
 
