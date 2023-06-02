@@ -10,12 +10,6 @@ Guide: [https://www.storyblok.com/tp/slug](https://www.storyblok.com/tp/slug)
 
 Build Your Own Showcase Gallery with Storyblok, SvelteKit, TailwindCSS and Edgio.
 
-## One-Click Deploy
-
-You can deploy your own hosted version of this template using the button below:
-
-[![Deploy with Edgio](https://docs.edg.io/button.svg)](https://app.layer0.co/deploy?repo=https://github.com/rishi-raj-jain/showcase-gallery-storyblok-sveltekit-edgio-starter)
-
 ## Tech Stack + Features
 
 ### Frameworks

@@ -1,6 +1,7 @@
 import { brotliCompressSync } from 'zlib'
-import { CustomCacheKey, Router } from '@edgio/core/router'
+import { Router } from '@edgio/core/router'
 import { isProductionBuild } from '@edgio/core/environment'
+import CustomCacheKey from '@edgio/core/router/CustomCacheKey'
 
 const BROTLI_ENCODING_REGEX = /\bbr\b/
 
@@ -19,7 +20,7 @@ const transformResponse = (res, req) => {
 	sendBrotliEncoded(req, res)
 }
 
-const router = new Router({ indexPermalink: true })
+const router = new Router()
 
 if (isProductionBuild()) {
 	router.static('.vercel/output/static')
@@ -31,7 +32,7 @@ router.prerender(async () => {
 })
 
 router.match('/service-worker.js', ({ serviceWorker }) => {
-	serviceWorker('.edgio/temp/service-worker.js')
+	serviceWorker('.edgio/tmp/service-worker.js')
 })
 
 // Cache the page repsonses at the edge only
@@ -116,10 +117,5 @@ router.match(
 		renderWithApp({ transformResponse })
 	}
 )
-
-// Block all other requests
-router.fallback(({ send }) => {
-	send('Blocked', 403)
-})
 
 export default router
