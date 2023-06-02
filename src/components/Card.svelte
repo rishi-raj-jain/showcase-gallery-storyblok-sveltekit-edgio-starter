@@ -17,13 +17,13 @@
 	export let index: number | null = null
 
 	onMount(() => {
-		if (item?.slug) prefetch('/ttemplates/' + item.slug + '/__data.json', 'fetch', { maxAgeSeconds: 60 })
+		if (item?.slug) prefetch('/templates/' + item.slug + '/__data.json', 'fetch', { maxAgeSeconds: 60 })
 	})
 </script>
 
 {#if !loading}
 	{#if item}
-		<a href={'/ttemplates/' + item.slug} class="group flex flex-col overflow-hidden rounded bg-white shadow-md duration-300 hover:shadow-2xl md:max-w-sm">
+		<a href={'/templates/' + item.slug} class="group flex flex-col overflow-hidden rounded bg-white shadow-md duration-300 hover:shadow-2xl md:max-w-sm">
 			<img
 				alt={item.name}
 				src={getScreenshotLoader(item.demoUrl)}

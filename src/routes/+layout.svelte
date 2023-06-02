@@ -16,7 +16,7 @@
 <Seo />
 
 <div class="relative flex min-h-screen w-full flex-col bg-white">
-	{#if Boolean($navigating) && $navigating?.to?.url.pathname.includes('/ttemplates/')}
+	{#if Boolean($navigating) && $navigating?.to?.url.pathname.includes('/templates/')}
 		<Detail />
 	{:else if Boolean($navigating) && $navigating?.from?.url.pathname !== '/' && $navigating?.to?.url.pathname === '/'}
 		<Listing />
