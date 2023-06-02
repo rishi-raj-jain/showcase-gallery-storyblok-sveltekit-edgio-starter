@@ -27,7 +27,8 @@ export function getDomain(val?: string) {
 
 export function getOrigin(val?: URL) {
 	if (val) {
-		let hostURL = val['x-host'] ?? val['host']
+		let origin
+		let hostURL = val.get('x-host') ?? val.get('host')
 		if (hostURL) {
 			hostURL = hostURL.replace('http://', '').replace('https://', '')
 			if (hostURL.includes('localhost:') || hostURL.includes('127.0.0.1')) {

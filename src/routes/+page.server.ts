@@ -1,16 +1,17 @@
 import type { Seo } from '@/src/classes'
 import { redirect } from '@sveltejs/kit'
+import type { PageServerLoad } from './$types'
 import { storyblokApi } from '@/src/storyblok'
 import { getBase64ImageUrl } from '@/src/image'
 import { getDescription, getOrigin, getScreenshotLoader, getTitle } from '@/src/utils'
 
-/** @type {import('./$types').PageServerLoad} */
-export const load = async ({ url }) => {
+export const load = async (req: PageServerLoad) => {
+	const url = req.url
 	// Create SEO Object
 	const seo: Seo = {
 		title: 'Find your Template - ' + getTitle(),
 		description: getDescription(),
-		domain: getOrigin(url),
+		domain: getOrigin(req.request.headers),
 		pathname: url.pathname
 	}
 

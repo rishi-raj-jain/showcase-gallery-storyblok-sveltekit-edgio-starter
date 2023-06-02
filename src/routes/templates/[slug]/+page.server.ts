@@ -1,10 +1,12 @@
 import { redirect } from '@sveltejs/kit'
+import type { PageServerLoad } from './$types'
 import { storyblokApi } from '@/src/storyblok'
 import { getBase64ImageUrl } from '@/src/image'
 import { getOrigin, getScreenshotLoader, getTitle, toHTML } from '@/src/utils'
 
-/** @type {import('./$types').PageServerLoad} */
-export const load = async ({ url, params }) => {
+export const load = async (req: PageServerLoad) => {
+	const url = req.url
+	const params = req.params
 	let findTemplate
 
 	const slug = params.slug
@@ -38,7 +40,7 @@ export const load = async ({ url, params }) => {
 	}
 
 	// Create social shareable image URL
-	const socialImage = new URL('/og', getOrigin(url))
+	const socialImage = new URL('/og', getOrigin(req.request.headers))
 	if (template.name) socialImage.searchParams.set('text', template.name)
 	if (template.description) socialImage.searchParams.set('description', template.description)
 	if (template.demoUrl) socialImage.searchParams.set('image', getScreenshotLoader(template.demoUrl))
@@ -47,7 +49,7 @@ export const load = async ({ url, params }) => {
 	const seo = {
 		title: template.name + ' - ' + getTitle(),
 		description: template.description,
-		domain: getOrigin(url),
+		domain: getOrigin(req.request.headers),
 		pathname: url.pathname,
 		image: socialImage.toString(),
 		preloads: template?.demoUrl ? [{ url: getScreenshotLoader(template.demoUrl), as: 'image' }] : []
